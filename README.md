@@ -8,3 +8,5 @@
 `pullr --base=<val>` -- defaults to what branch you are on
 
 `pullr --head=<val>` -- defaults to master
+
+`pullr --forcelogin` -- will force you to relogin
