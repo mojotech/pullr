@@ -1,0 +1,32 @@
+{
+  "name": "pullr",
+  "version": "0.0.0",
+  "description": "Pull Requests From The CLI",
+  "main": "bin/pullr.js",
+  "dependencies": {
+    "prompt": "~0.2.9",
+    "request": "~2.14.0",
+    "colors": "latest"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mojotech/pullr.git"
+  },
+  "keywords": [
+    "github",
+    "pull",
+    "request",
+    "pull",
+    "request",
+    "cli",
+    "utility"
+  ],
+  "author": "Sam Saccone",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "f2a6d49103b88edf39d95c55e19b19a4c34364e7"
+}
