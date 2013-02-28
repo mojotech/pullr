@@ -6,7 +6,7 @@
   "dependencies": {
     "prompt": "~0.2.9",
     "request": "~2.14.0",
-    "request": "1.4.4",
+    "underscore": "1.4.4",
     "colors": "latest"
   },
   "devDependencies": {},
