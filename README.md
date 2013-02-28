@@ -1,7 +1,9 @@
 ## Pullr
 
-
 ### Pull Requests from the CLI
+
+[![Pullr](https://raw.github.com/mojotech/pullr/master/logo.png)](https://github.com/mojotech/pullr)
+
 
 ### `npm install pullr`
 
