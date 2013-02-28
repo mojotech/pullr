@@ -1,6 +1,6 @@
 {
   "name": "pullr",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Pull Requests From The CLI",
   "main": "bin/pullr.js",
   "dependencies": {
@@ -27,7 +27,7 @@
     "utility"
   ],
   "author": "Sam Saccone",
-  "license": "BSD",
+  "license": "MIT",
   "readmeFilename": "README.md",
   "gitHead": "f2a6d49103b88edf39d95c55e19b19a4c34364e7"
 }
