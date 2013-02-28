@@ -7,8 +7,6 @@
 [![Pullr](https://raw.github.com/mojotech/pullr/master/logo.png)](https://github.com/mojotech/pullr)
 
 
-
-
 #### Optional CLI Options
 
 `pullr --title=<val>` -- defaults to title of last commit
