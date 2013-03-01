@@ -9,4 +9,4 @@
 
 `pullr --head=<val>` -- defaults to master
 
-`pullr --forcelogin` -- will force you to relogin
+`pullr --force-login` -- will force you to relogin
