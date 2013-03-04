@@ -11,9 +11,9 @@
 
 `pullr --title=<val>` -- defaults to title of last commit
 
-`pullr --branch=<val>` -- defaults to what branch you are on
+`pullr --from=<val>` -- defaults to what branch you are on
 
-`pullr --head=<val>` -- defaults to master
+`pullr --into=<val>` -- defaults to master
 
 `pullr --forcelogin` -- will force you to relogin
 
