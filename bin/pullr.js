@@ -10,6 +10,7 @@ var Q           = require('q'),
 
 program
   .version(package.version)
+  .option('-n, --new', 'open a new pull request')
   .option('-t, --title <title>', 'pull request title')
   .option('-d, --description <description>', 'pull request description')
   .option('-i, --into <branch>', "target branch, defaults to 'master'")
@@ -19,6 +20,7 @@ program
   .option('-l, --force-login', 'request credentials even if already logged in')
   .option('-p, --preflight', 'preflight pull request without actually submitting')
   .parse(process.argv);
+
 
 Q.all([
   getCredentials(program.forceLogin),
@@ -89,6 +91,9 @@ function getCredentials(forceLogin) {
 }
 
 function openPullRequest(options) {
+  if (!program.new) {
+    throw "you need to pass --new or -n to open a PR\n --help to view all commands"
+  }
   var url = 'https://api.github.com/repos/'
         + options.intoOwner + '/' + options.intoRepo + '/pulls',
       head = options.fromOwner + ':' + options.fromBranch,
