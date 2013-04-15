@@ -6,17 +6,19 @@
 
 [![Pullr](https://raw.github.com/mojotech/pullr/master/logo.png)](https://github.com/mojotech/pullr)
 
+#### CLI Options
 
-#### Optional CLI Options
-
-`pullr --title=<val>` -- defaults to title of last commit
-
-`pullr --from=<val>` -- defaults to what branch you are on
-
-`pullr --into=<val>` -- defaults to master
-
-`pullr --forcelogin` -- will force you to relogin
-
+    -h, --help                       output usage information
+    -V, --version                    output the version number
+    -n, --new                        open a new pull request
+    -t, --title <title>              pull request title
+    -d, --description <description>  pull request description
+    -i, --into <branch>              target branch, defaults to 'master'
+    -f, --from <branch>              source branch, defaults to current
+    -I, --into-remote <remote>       target remote server, defaults to 'origin'
+    -F, --from-remote <remote>       source remote server, defaults to 'origin'
+    -l, --force-login                request credentials even if already logged in
+    -p, --preflight                  preflight pull request without actually submitting
 
 #### Credits
 
