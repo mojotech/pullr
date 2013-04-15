@@ -32,7 +32,9 @@ Q.all([
 ])
 .spread(function(
   credentials, servers, title, from, into, fromRemote, intoRemote) {
-  if(!program.new && !program.preflight) { throw 'Missing required options, use --help to view.'; }
+  if(!program.new && !program.preflight) {
+    program.outputHelp(); throw 'Missing required options.';
+  }
   if(!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
   if(!servers[intoRemote]) { throw 'Unknown remote ' + intoRemote + '.'; }
 
