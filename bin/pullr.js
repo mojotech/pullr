@@ -95,6 +95,7 @@ function getCredentials(forceLogin) {
 function openPullRequest(options) {
   var url = 'https://api.github.com/repos/'
         + options.intoOwner + '/' + options.intoRepo + '/pulls',
+      repo = options.intoRepo,
       head = options.fromOwner + ':' + options.fromBranch,
       base = options.intoOwner + ':' + options.intoBranch;
 
@@ -106,7 +107,7 @@ function openPullRequest(options) {
   if(options.preflight) {
     console.log(
       (' Success: Preflighted a pull request from '
-        + head + ' into ' + base + '. ').inverse.green);
+        + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
   } else {
     return Q.ninvoke(request, 'post', url, {
       auth : {
@@ -121,14 +122,20 @@ function openPullRequest(options) {
       })
     })
     .spread(function(response) {
-      var errors = response.body && JSON.parse(response.body).errors;
+      var body  = response.body && JSON.parse(response.body),
+          state = body.state,
+          error = (body.errors
+            && body.errors.length
+            && body.errors.slice(-1)[0]
+            && body.errors.slice(-1)[0].message
+            || body.message);
 
-      errors && errors.length
+      state !== 'open'
         ? console.log(
-          (' Error: ' + errors.slice(-1)[0].message + ' ').inverse.red)
+          (' Error: ' + error + ' ').inverse.red)
         : console.log(
           (' Success: Opened a pull request from '
-            + head + ' into ' + base + '. ').inverse.green);
+            + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
     });
   }
 }
