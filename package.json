@@ -6,12 +6,14 @@
   "dependencies": {
     "prompt": "~0.2.9",
     "request": "~2.14.0",
-    "underscore": "1.4.4",
-    "async": "0.2.5",
-    "colors": "latest"
+    "colors": "~0.6.0-1",
+    "commander": "~1.1.1",
+    "q": "~0.9.3"
   },
   "devDependencies": {},
-  "bin": {"pullr": "bin/pullr.js"},
+  "bin": {
+    "pullr": "bin/pullr.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
