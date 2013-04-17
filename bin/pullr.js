@@ -32,7 +32,7 @@ Q.all([
 ])
 .spread(function(
   credentials, servers, title, from, into, fromRemote, intoRemote) {
-  if(!program.new && !program.preflight) {
+  if(!shouldOpenNewPullRequest()) {
     program.outputHelp(); throw 'Missing required options.';
   }
   if(!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
@@ -86,6 +86,13 @@ function getRemoteServers() {
 
       return _servers;
     });
+}
+
+function shouldOpenNewPullRequest() {
+  if (program.new || program.into || program.from) {
+    return true;
+  }
+  return false;
 }
 
 function getCredentials(forceLogin) {
