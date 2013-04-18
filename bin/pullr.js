@@ -89,10 +89,7 @@ function getRemoteServers() {
 }
 
 function shouldOpenNewPullRequest() {
-  if (program.new || program.into || program.from) {
-    return true;
-  }
-  return false;
+  return (program.new || program.into || program.from);
 }
 
 function getCredentials(forceLogin) {
