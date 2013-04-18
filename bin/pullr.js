@@ -96,7 +96,7 @@ function shouldOpenNewPullRequest() {
 }
 
 function getCredentials(forceLogin) {
-  return Q.nfcall(credentials, forceLogin);
+  return Q.nfcall(credentials.get, forceLogin);
 }
 
 function openPullRequest(options) {
