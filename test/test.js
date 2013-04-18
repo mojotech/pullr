@@ -14,7 +14,6 @@ describe("Credentials", function() {
           if (err || stderr) {
             throw(err || stderr);
           }
-          done(err || stderr);
         });
       } else {
         done()
@@ -42,6 +41,4 @@ describe("Credentials", function() {
       });
     });
   });
-
 });
-
