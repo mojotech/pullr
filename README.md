@@ -1,5 +1,7 @@
 ## Pullr
 
+[![Build Status](https://travis-ci.org/mojotech/pullr.png?branch=master)](https://travis-ci.org/mojotech/pullr)
+
 #### `npm install -g pullr`
 
 ### Pull Requests from the CLI

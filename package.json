@@ -10,12 +10,14 @@
     "commander": "~1.1.1",
     "q": "~0.9.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "mocha": "1.9.0"
+  },
   "bin": {
     "pullr": "bin/pullr.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
