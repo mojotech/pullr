@@ -114,6 +114,9 @@ function openPullRequest(options) {
         + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
   } else {
     return Q.ninvoke(request, 'post', url, {
+      headers : {
+        'User-Agent': 'Pullr NPM v'+package.version
+      },
       auth : {
         'username' : options.credentials.email,
         'password' : options.credentials.password
