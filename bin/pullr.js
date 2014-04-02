@@ -6,7 +6,16 @@ var Q           = require('q'),
     request     = require('request'),
     program     = require('commander'),
     package     = require('../package.json'),
-    credentials = require('../lib/credentials');
+    credentials = require('../lib/credentials'),
+    UNotifier   = require('update-notifier');
+
+var notifier = UNotifier({
+  packagePath: "../package.json"
+});
+
+if (notifier.update) {
+  notifier.notify();
+}
 
 program
   .version(package.version)
