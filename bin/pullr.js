@@ -101,7 +101,7 @@ function openPullRequest(options) {
         + options.intoOwner + '/' + options.intoRepo + '/pulls',
       repo = options.intoRepo,
       head = options.fromOwner + ':' + options.fromBranch,
-      base = options.intoOwner + ':' + options.intoBranch;
+      base = options.intoBranch;
 
   if(options.fromRepo !== options.intoRepo) {
     throw 'From repo (' + options.fromRepo + ')'
