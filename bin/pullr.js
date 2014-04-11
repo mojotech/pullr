@@ -146,12 +146,14 @@ function openPullRequest(options) {
             && body.errors.slice(-1)[0].message
             || body.message);
 
-      state !== 'open'
-        ? console.log(
-          (' Error: ' + error + ' ').inverse.red)
-        : console.log(
-          (' Success: Opened a pull request from '
-            + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
+      if (state !== 'open') {
+        console.log((' Error: ' + error + ' ').inverse.red);
+        return;
+      }
+      
+      console.log((' Success: Opened a pull request from '
+            + head + ' into ' + base + ' for ' + repo + '.').inverse.green);
+      console.log(body.html_url);
     });
   }
 }
