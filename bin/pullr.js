@@ -63,6 +63,9 @@ Q.all([
 .then(openPullRequest)
 .fail(function(error) {
   console.log((' Error: ' + error + ' ').inverse.red);
+})
+.done(function(msg) {
+  console.log(msg);
 });
 
 function getBranchDescription(branch) {
@@ -118,9 +121,8 @@ function openPullRequest(options) {
   }
 
   if(options.preflight) {
-    console.log(
-      (' Success: Preflighted a pull request from '
-        + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
+    return ('Success: Preflighted a pull request from '
+            + head + ' into ' + base + ' for ' + repo + '.').inverse.green;
   } else {
     return Q.ninvoke(request, 'post', url, {
       headers : {
@@ -146,12 +148,13 @@ function openPullRequest(options) {
             && body.errors.slice(-1)[0].message
             || body.message);
 
-      state !== 'open'
-        ? console.log(
-          (' Error: ' + error + ' ').inverse.red)
-        : console.log(
-          (' Success: Opened a pull request from '
-            + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
+      if (state !== 'open') {
+        throw new Error(error);
+      }
+      
+      return (' Success: Opened a pull request from '
+             + head + ' into ' + base + ' for ' + repo + '.').inverse.green
+             + "\n " + body.html_url;
     });
   }
 }
