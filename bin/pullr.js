@@ -151,7 +151,7 @@ function openPullRequest(options) {
           (' Error: ' + error + ' ').inverse.red)
         : console.log(
           (' Success: Opened a pull request from '
-            + head + ' into ' + base + ' for ' + repo + '. ').inverse.green);
+            + head + ' into ' + base + ' for ' + repo + '. \n'+ body.url).inverse.green);
     });
   }
 }
