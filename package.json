@@ -1,6 +1,6 @@
 {
   "name": "pullr",
-  "version": "0.2.6-1",
+  "version": "0.2.7",
   "description": "Pull Requests From The CLI",
   "main": "bin/pullr.js",
   "dependencies": {
