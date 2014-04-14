@@ -63,9 +63,11 @@ Q.all([
 .then(openPullRequest)
 .fail(function(error) {
   console.log((' Error: ' + error + ' ').inverse.red);
+  process.exit(1);
 })
 .done(function(msg) {
   console.log(msg);
+  process.exit(0);
 });
 
 function getBranchDescription(branch) {
