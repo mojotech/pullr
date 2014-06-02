@@ -147,11 +147,11 @@ function openPullRequest(options) {
           error = (body.errors
             && body.errors.length
             && body.errors.slice(-1)[0]
-            && body.errors.slice(-1)[0].message
+            && (body.errors.slice(-1)[0].field || body.errors.slice(-1)[0].message)
             || body.message);
 
       if (state !== 'open') {
-        throw new Error(error);
+        throw error === 'base' ? "Remote branch doesn't exist. Did you push?" : error
       }
       
       return (' Success: Opened a pull request from '
