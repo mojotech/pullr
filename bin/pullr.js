@@ -41,8 +41,11 @@ Q.all([
 ])
 .spread(function(
   credentials, servers, title, from, into, fromRemote, intoRemote) {
-  if(!shouldOpenNewPullRequest()) {
+  if(!shouldOpenNewPullRequest() && !program.forceLogin) {
     program.outputHelp(); throw 'Missing required options.';
+  }
+  else if (program.forceLogin && !shouldOpenNewPullRequest()) {
+    return { loginOnly: true }
   }
   if(!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
   if(!servers[intoRemote]) { throw 'Unknown remote ' + intoRemote + '.'; }
@@ -111,6 +114,9 @@ function getCredentials(forceLogin) {
 }
 
 function openPullRequest(options) {
+  if (options.loginOnly) {
+    return " Login successful ".green.inverse
+  }
   var url = 'https://api.github.com/repos/'
         + options.intoOwner + '/' + options.intoRepo + '/pulls',
       repo = options.intoRepo,
