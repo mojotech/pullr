@@ -1,3 +1,9 @@
+## V0.2.8
+
+* Improvements
+  * Allow a force login without having to open a new PR
+  * Improve error logging and messaging
+
 ## V0.2.6
 
 * Improvements
