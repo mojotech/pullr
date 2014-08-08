@@ -1,3 +1,8 @@
+## V0.3.0
+
+* Improvements
+  * you can now pass the --plaintext CLI flag to prevent colored output
+
 ## V0.2.8
 
 * Improvements
