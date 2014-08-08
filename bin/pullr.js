@@ -28,6 +28,7 @@ program
   .option('-F, --from-remote <remote>', "source remote server, defaults to 'origin'")
   .option('-l, --force-login', 'request credentials even if already logged in')
   .option('-p, --preflight', 'preflight pull request without actually submitting')
+  .option('--plaintext', 'print success / error messages without ansi codes')
   .parse(process.argv);
 
 Q.all([
@@ -60,12 +61,18 @@ Q.all([
     intoRepo    : servers[intoRemote].repo,
     intoOwner   : servers[intoRemote].owner,
     credentials : credentials,
-    preflight   : program.preflight
+    preflight   : program.preflight,
+    plaintext   : program.plaintext
   }
 })
 .then(openPullRequest)
 .fail(function(error) {
-  console.log((' Error: ' + error + ' ').inverse.red);
+  var msg = ' Error: ' + error + ' ';
+  if (program.plaintext) {
+    console.log(msg);
+  } else {
+    console.log(msg.inverse.red);
+  };
   process.exit(1);
 })
 .done(function(msg) {
@@ -115,7 +122,12 @@ function getCredentials(forceLogin) {
 
 function openPullRequest(options) {
   if (options.loginOnly) {
-    return " Login successful ".green.inverse
+    var msg = ' Login successful '
+    if (options.plaintext) {
+      return msg
+    } else{
+      return msg.green.inverse
+    };
   }
   var url = 'https://api.github.com/repos/'
         + options.intoOwner + '/' + options.intoRepo + '/pulls',
@@ -129,8 +141,14 @@ function openPullRequest(options) {
   }
 
   if(options.preflight) {
-    return ('Success: Preflighted a pull request from '
-            + head + ' into ' + base + ' for ' + repo + '.').inverse.green;
+    var msg = ('Success: Preflighted a pull request from '
+               + head + ' into ' + base + ' for ' + repo + '.')
+    if (options.plaintext) {
+      return msg
+    } else {
+      return msg.inverse.green;
+    };
+
   } else {
     return Q.ninvoke(request, 'post', url, {
       headers : {
@@ -159,10 +177,15 @@ function openPullRequest(options) {
       if (state !== 'open') {
         throw error === 'base' ? "Remote branch doesn't exist. Did you push?" : error
       }
-      
-      return (' Success: Opened a pull request from '
-             + head + ' into ' + base + ' for ' + repo + '.').inverse.green
-             + "\n " + body.html_url;
+
+      var msg = (' Success: Opened a pull request from '
+                 + head + ' into ' + base + ' for ' + repo + '.')
+                 + "\n " + body.html_url;
+      if (options.plaintext) {
+        return msg
+      } else {
+        return msg.inverse.green;
+      };
     });
   }
 }
