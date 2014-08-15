@@ -1,3 +1,9 @@
+## V0.3.1
+
+* Fixes
+  * Fix bug with color output
+  * lock deps so that the tool works with node 0.8
+
 ## V0.3.0
 
 * Improvements
