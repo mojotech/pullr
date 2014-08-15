@@ -4,12 +4,12 @@
   "description": "Pull Requests From The CLI",
   "main": "bin/pullr.js",
   "dependencies": {
-    "prompt": "~0.2.9",
-    "request": "~2.14.0",
-    "colors": "~0.6.0-1",
-    "commander": "~1.1.1",
-    "q": "~0.9.3",
-    "update-notifier": "~0.1.8"
+    "prompt": "0.2.9",
+    "request": "2.14.0",
+    "colors": "0.6.0-1",
+    "commander": "1.1.1",
+    "q": "0.9.3",
+    "update-notifier": "0.1.8"
   },
   "devDependencies": {
     "mocha": "1.9.0"
