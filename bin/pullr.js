@@ -179,13 +179,12 @@ function openPullRequest(options) {
       }
 
       var msg = (' Success: Opened a pull request from '
-                 + head + ' into ' + base + ' for ' + repo + '.')
-                 + "\n " + body.html_url;
-      if (options.plaintext) {
-        return msg
-      } else {
-        return msg.inverse.green;
-      };
+                 + head + ' into ' + base + ' for ' + repo + '.');
+
+      return (options.plaintext ?
+              msg :
+              msg.inverse.green
+            ) + "\n " + body.html_url;
     });
   }
 }
