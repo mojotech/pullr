@@ -180,11 +180,10 @@ function openPullRequest(options) {
 
       var msg = (' Success: Opened a pull request from '
                  + head + ' into ' + base + ' for ' + repo + '.')
-                 + "\n " + body.html_url;
       if (options.plaintext) {
-        return msg
+        return msg + "\n " + body.html_url;
       } else {
-        return msg.inverse.green;
+        return msg.inverse.green + "\n " + body.html_url;
       };
     });
   }
