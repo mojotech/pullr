@@ -103,7 +103,7 @@ function getRemoteServers() {
 
         type === 'fetch' && (_servers[name] = {
           owner: _url[0],
-          repo : _url[1].slice(0, -4)
+          repo : _url[1].replace(/\.git$/, "")
         });
 
       });
