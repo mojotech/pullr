@@ -1,3 +1,8 @@
+## V0.3.2
+
+* Fixes
+  * Handle case where repo remote does not have a `.git` extension. Thanks @anjdreas
+
 ## V0.3.1
 
 * Fixes
@@ -23,4 +28,3 @@
 * Fixes
   * Fix bug with the v3 api change,
   * Fix bug when a user is already authed with the pullr app.
-
