@@ -121,8 +121,10 @@ function getCredentials(forceLogin) {
 }
 
 function openPullRequest(options) {
+  var msg;
+
   if (options.loginOnly) {
-    var msg = ' Login successful ';
+    msg = ' Login successful ';
     if (options.plaintext) {
       return msg;
     } else{
@@ -139,7 +141,7 @@ function openPullRequest(options) {
   }
 
   if(options.preflight) {
-    var msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
+    msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
     if (options.plaintext) {
       return msg;
     } else {
