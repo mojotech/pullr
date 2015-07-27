@@ -129,20 +129,17 @@ function openPullRequest(options) {
       return msg.green.inverse;
     }
   }
-  var url = 'https://api.github.com/repos/'
-        + options.intoOwner + '/' + options.intoRepo + '/pulls',
+  var url = 'https://api.github.com/repos/' + options.intoOwner + '/' + options.intoRepo + '/pulls',
       repo = options.intoRepo,
       head = options.fromOwner + ':' + options.fromBranch,
       base = options.intoBranch;
 
   if(options.fromRepo !== options.intoRepo) {
-    throw 'From repo (' + options.fromRepo + ')'
-      + ' does not match into repo (' + options.intoRepo + ').';
+    throw 'From repo (' + options.fromRepo + ')' + ' does not match into repo (' + options.intoRepo + ').';
   }
 
   if(options.preflight) {
-    var msg = ('Success: Preflighted a pull request from '
-               + head + ' into ' + base + ' for ' + repo + '.');
+    var msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
     if (options.plaintext) {
       return msg;
     } else {
@@ -168,18 +165,17 @@ function openPullRequest(options) {
     .spread(function(response) {
       var body  = response.body && JSON.parse(response.body),
           state = body.state,
-          error = (body.errors
-            && body.errors.length
-            && body.errors.slice(-1)[0]
-            && (body.errors.slice(-1)[0].field || body.errors.slice(-1)[0].message)
-            || body.message);
+          error = (body.errors &&
+                   body.errors.length &&
+                   body.errors.slice(-1)[0] &&
+                   (body.errors.slice(-1)[0].field || body.errors.slice(-1)[0].message)||
+                   body.message);
 
       if (state !== 'open') {
         throw error === 'base' ? "Remote branch doesn't exist. Did you push?" : error;
       }
 
-      var msg = (' Success: Opened a pull request from '
-                 + head + ' into ' + base + ' for ' + repo + '.');
+      var msg = (' Success: Opened a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
 
       return (options.plaintext ?
               msg :
