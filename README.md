@@ -24,9 +24,9 @@
 
 #### Credits
 
-[![MojoTech](http://www.mojotech.com/press/logo.png)](http://www.mojotech.com)
+[![MojoTech](https://avatars3.githubusercontent.com/u/314035?v=3&s=200)](http://www.mojotech.com)
 
 #### License
 
 
-Pullr is Copyright © 2014 MojoTech, LLC. It is free software, and may be redistributed under the terms specified in the LICENSE file.
+Pullr is Copyright © 2015 MojoTech, LLC. It is free software, and may be redistributed under the terms specified in the [LICENSE](license.txt) file.

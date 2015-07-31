@@ -46,7 +46,7 @@ Q.all([
     program.outputHelp(); throw 'Missing required options.';
   }
   else if (program.forceLogin && !shouldOpenNewPullRequest()) {
-    return { loginOnly: true }
+    return { loginOnly: true };
   }
   if(!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
   if(!servers[intoRemote]) { throw 'Unknown remote ' + intoRemote + '.'; }
@@ -63,7 +63,7 @@ Q.all([
     credentials : credentials,
     preflight   : program.preflight,
     plaintext   : program.plaintext
-  }
+  };
 })
 .then(openPullRequest)
 .fail(function(error) {
@@ -72,7 +72,7 @@ Q.all([
     console.log(msg);
   } else {
     console.log(msg.inverse.red);
-  };
+  }
   process.exit(1);
 })
 .done(function(msg) {
@@ -121,33 +121,32 @@ function getCredentials(forceLogin) {
 }
 
 function openPullRequest(options) {
+  var msg;
+
   if (options.loginOnly) {
-    var msg = ' Login successful '
+    msg = ' Login successful ';
     if (options.plaintext) {
-      return msg
+      return msg;
     } else{
-      return msg.green.inverse
-    };
+      return msg.green.inverse;
+    }
   }
-  var url = 'https://api.github.com/repos/'
-        + options.intoOwner + '/' + options.intoRepo + '/pulls',
+  var url = 'https://api.github.com/repos/' + options.intoOwner + '/' + options.intoRepo + '/pulls',
       repo = options.intoRepo,
       head = options.fromOwner + ':' + options.fromBranch,
       base = options.intoBranch;
 
   if(options.fromRepo !== options.intoRepo) {
-    throw 'From repo (' + options.fromRepo + ')'
-      + ' does not match into repo (' + options.intoRepo + ').';
+    throw 'From repo (' + options.fromRepo + ')' + ' does not match into repo (' + options.intoRepo + ').';
   }
 
   if(options.preflight) {
-    var msg = ('Success: Preflighted a pull request from '
-               + head + ' into ' + base + ' for ' + repo + '.')
+    msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
     if (options.plaintext) {
-      return msg
+      return msg;
     } else {
       return msg.inverse.green;
-    };
+    }
 
   } else {
     return Q.ninvoke(request, 'post', url, {
@@ -168,18 +167,17 @@ function openPullRequest(options) {
     .spread(function(response) {
       var body  = response.body && JSON.parse(response.body),
           state = body.state,
-          error = (body.errors
-            && body.errors.length
-            && body.errors.slice(-1)[0]
-            && (body.errors.slice(-1)[0].field || body.errors.slice(-1)[0].message)
-            || body.message);
+          error = (body.errors &&
+                   body.errors.length &&
+                   body.errors.slice(-1)[0] &&
+                   (body.errors.slice(-1)[0].field || body.errors.slice(-1)[0].message)||
+                   body.message);
 
       if (state !== 'open') {
-        throw error === 'base' ? "Remote branch doesn't exist. Did you push?" : error
+        throw error === 'base' ? "Remote branch doesn't exist. Did you push?" : error;
       }
 
-      var msg = (' Success: Opened a pull request from '
-                 + head + ' into ' + base + ' for ' + repo + '.');
+      var msg = (' Success: Opened a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
 
       return (options.plaintext ?
               msg :
