@@ -12,7 +12,7 @@
     "update-notifier": "0.5.0"
   },
   "devDependencies": {
-    "mocha": "1.9.0"
+    "mocha": "2.3.3"
   },
   "bin": {
     "pullr": "bin/pullr.js"
