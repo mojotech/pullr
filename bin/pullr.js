@@ -125,11 +125,8 @@ function openPullRequest(options) {
 
   if (options.loginOnly) {
     msg = ' Login successful ';
-    if (options.plaintext) {
-      return msg;
-    } else{
-      return msg.green.inverse;
-    }
+    if (options.plaintext) { return msg; }
+    return msg.green.inverse;
   }
   var url = 'https://api.github.com/repos/' + options.intoOwner + '/' + options.intoRepo + '/pulls',
       repo = options.intoRepo,
@@ -142,11 +139,8 @@ function openPullRequest(options) {
 
   if(options.preflight) {
     msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
-    if (options.plaintext) {
-      return msg;
-    } else {
-      return msg.inverse.green;
-    }
+    if (options.plaintext) { return msg; }
+    return msg.inverse.green;
 
   } else {
     return Q.ninvoke(request, 'post', url, {
@@ -179,10 +173,7 @@ function openPullRequest(options) {
 
       var msg = (' Success: Opened a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
 
-      return (options.plaintext ?
-              msg :
-              msg.inverse.green
-            ) + "\n " + body.html_url;
+      return (options.plaintext ? msg : msg.inverse.green) + "\n " + body.html_url;
     });
   }
 }
