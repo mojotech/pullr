@@ -42,14 +42,14 @@ Q.all([
 ])
 .spread(function(
   credentials, servers, title, from, into, fromRemote, intoRemote) {
-  if(!shouldOpenNewPullRequest() && !program.forceLogin) {
+  if (!shouldOpenNewPullRequest() && !program.forceLogin) {
     program.outputHelp(); throw 'Missing required options.';
   }
   else if (program.forceLogin && !shouldOpenNewPullRequest()) {
     return { loginOnly: true };
   }
-  if(!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
-  if(!servers[intoRemote]) { throw 'Unknown remote ' + intoRemote + '.'; }
+  if (!servers[fromRemote]) { throw 'Unknown remote ' + fromRemote + '.'; }
+  if (!servers[intoRemote]) { throw 'Unknown remote ' + intoRemote + '.'; }
 
   return {
     title       : title,
@@ -133,11 +133,11 @@ function openPullRequest(options) {
       head = options.fromOwner + ':' + options.fromBranch,
       base = options.intoBranch;
 
-  if(options.fromRepo !== options.intoRepo) {
+  if (options.fromRepo !== options.intoRepo) {
     throw 'From repo (' + options.fromRepo + ')' + ' does not match into repo (' + options.intoRepo + ').';
   }
 
-  if(options.preflight) {
+  if (options.preflight) {
     msg = ('Success: Preflighted a pull request from ' + head + ' into ' + base + ' for ' + repo + '.');
     if (options.plaintext) { return msg; }
     return msg.inverse.green;
