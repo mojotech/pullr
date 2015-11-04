@@ -86,7 +86,7 @@ function getBranchDescription(branch) {
 }
 
 function getBranchName() {
-  return Q.nfcall(exec, 'git rev-parse --abbrev-ref HEAD')
+  return Q.nfcall(exec, 'git symbolic-ref --short -q HEAD')
     .spread(function(name) { return name.trim(); });
 }
 
