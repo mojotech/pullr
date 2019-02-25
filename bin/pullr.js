@@ -9,9 +9,7 @@ var Q           = require('q'),
     credentials = require('../lib/credentials'),
     UNotifier   = require('update-notifier');
 
-var notifier = UNotifier({
-  packagePath: "../package.json"
-});
+var notifier = UNotifier({pkg: package});
 
 if (notifier.update) {
   notifier.notify();
