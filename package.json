@@ -8,7 +8,7 @@
     "request": "2.14.0",
     "colors": "1.3.3",
     "commander": "~2.19.0",
-    "q": "0.9.3",
+    "q": "~1.5.1",
     "update-notifier": "0.1.8"
   },
   "devDependencies": {
