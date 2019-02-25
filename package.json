@@ -4,7 +4,7 @@
   "description": "Pull Requests From The CLI",
   "main": "bin/pullr.js",
   "dependencies": {
-    "prompt": "0.2.9",
+    "prompt": "~1.0.0",
     "request": "2.14.0",
     "colors": "1.3.3",
     "commander": "~2.19.0",
